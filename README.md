@@ -3,6 +3,9 @@
 ## Project Overview
 A modern web platform that helps users discover free activities based on their location, group size, and preferences. The platform aims to provide personalized recommendations for free activities and entertainment options.
 
+![landing-page.png](landing-page.png)
+
+
 ## Core Features
 
 ### 1. Activity Recommendation Engine
