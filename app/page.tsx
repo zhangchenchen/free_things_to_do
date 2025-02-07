@@ -3,6 +3,7 @@ import { ActivitySearch } from "@/components/activity-search"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Users, Clock, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function Home() {
   const featuredActivities = [
@@ -36,12 +37,15 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative py-20 px-4 bg-gradient-to-b from-primary/10 to-background">
           <div className="container mx-auto text-center space-y-8">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
-              Discover Amazing Free Activities
-            </h1>
+            <Link href="/" className="inline-block">
+              <h1 className="text-4xl font-bold tracking-tight mb-4 hover:text-primary/90 transition-colors">
+                Discover Amazing Free Activities
+              </h1>
+            </Link>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Find the best free things to do in your area. Perfect for families,
-              students, and anyone looking for cost-free entertainment.
+              Powered by AI to find the perfect free activities in your area. 
+              Get personalized recommendations for families, students, and anyone 
+              looking for cost-free entertainment.
             </p>
             <ActivitySearch />
           </div>

@@ -13,18 +13,13 @@ export interface ActivityRequest {
 }
 
 export interface Activity {
-  id: string;
-  name: string;
+  id?: string;
+  title: string;
   description: string;
-  location: string;
-  bestTime: string;
-  groupSize: string;
-  isIndoor: boolean;
-  isOutdoor: boolean;
-  isAccessible: boolean;
   category: string;
-  rating?: number;
-  feedback?: string[];
+  specific_location: string;
+  best_time: string;
+  notice: string;
 }
 
 export interface ActivityResponse {
@@ -34,4 +29,10 @@ export interface ActivityResponse {
     season: string;
     time: string;
   };
+}
+
+export interface SearchParams {
+  location: string;
+  groupSize: "1" | "2" | "3-5" | "6+";
+  additionalPreferences?: string;
 }
