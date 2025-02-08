@@ -25,8 +25,9 @@ export function ActivitySearch() {
   const [activities, setActivities] = useState<Activity[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [hasMore, setHasMore] = useState(true)
 
-  const handleSearch = async () => {
+  const fetchActivities = async (isLoadMore = false) => {
     if (!location) {
       toast({
         title: "Location Required",
@@ -43,31 +44,37 @@ export function ActivitySearch() {
         location,
         groupSize,
         additionalPreferences: additionalPreferences || undefined,
+        offset: isLoadMore ? activities.length : 0,
       })
       
-      let activities
+      let newActivities: Activity[]
       let cleanedResponse = ''
       try {
         cleanedResponse = response
-          .replace(/```json\n?/g, '')  // 移除开始的 json 标记
-          .replace(/\n?```/g, '')      // 移除结束的标记
-          .replace(/[\u201C\u201D]/g, '"') // 替换智能引号
-          .replace(/[\u2018\u2019]/g, "'") // 替换智能单引号
+          .replace(/```json\n?/g, '')
+          .replace(/\n?```/g, '')
+          .replace(/[\u201C\u201D]/g, '"')
+          .replace(/[\u2018\u2019]/g, "'")
           .trim()
 
-        // 尝试解析前先验证 JSON 格式
         if (!cleanedResponse.startsWith('[') || !cleanedResponse.endsWith(']')) {
           throw new Error('Response is not a valid JSON array')
         }
 
-        activities = JSON.parse(cleanedResponse)
+        newActivities = JSON.parse(cleanedResponse)
 
-        // 验证活动数据结构
-        if (!Array.isArray(activities) || !activities.every(isValidActivity)) {
+        if (!Array.isArray(newActivities) || !newActivities.every(isValidActivity)) {
           throw new Error('Invalid activity data structure')
         }
 
-        setActivities(activities)
+        setActivities(prev => {
+          const updatedActivities = isLoadMore ? [...prev, ...newActivities] : newActivities
+          // 只保留前10个活动
+          const limitedActivities = updatedActivities.slice(0, 10)
+          // 如果已经有10个活动了，就不显示加载更多按钮
+          setHasMore(limitedActivities.length < 10 && newActivities.length === 5)
+          return limitedActivities
+        })
       } catch (e) {
         console.error('Raw response:', response)
         console.error('Cleaned response:', cleanedResponse)
@@ -81,6 +88,9 @@ export function ActivitySearch() {
       setLoading(false)
     }
   }
+
+  const handleSearch = () => fetchActivities(false)
+  const handleLoadMore = () => fetchActivities(true)
 
   // 验证活动数据结构的辅助函数
   function isValidActivity(activity: any): activity is Activity {
@@ -177,8 +187,9 @@ export function ActivitySearch() {
         <div className="mt-12">
           <ActivityResults
             activities={activities}
-            onLoadMore={() => {}}
+            onLoadMore={handleLoadMore}
             loading={loading}
+            hasMore={hasMore}
           />
         </div>
       )}

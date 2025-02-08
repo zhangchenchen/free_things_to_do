@@ -10,12 +10,14 @@ interface ActivityResultsProps {
   activities: Activity[];
   onLoadMore: () => void;
   loading?: boolean;
+  hasMore?: boolean;
 }
 
 export function ActivityResults({
   activities,
   onLoadMore,
   loading = false,
+  hasMore = false,
 }: ActivityResultsProps) {
   return (
     <div className="space-y-6">
@@ -82,10 +84,22 @@ export function ActivityResults({
         ))}
       </div>
       
-      {activities.length > 0 && (
-        <div className="text-center mt-8">
-          <Button onClick={onLoadMore} disabled={loading}>
-            {loading ? "Loading..." : "Load More Activities"}
+      {hasMore && (
+        <div className="flex justify-center mt-8">
+          <Button
+            onClick={onLoadMore}
+            disabled={loading}
+            variant="outline"
+            size="lg"
+            className="min-w-[200px]"
+          >
+            {loading ? (
+              <>
+                <span className="mr-2">Loading...</span>
+              </>
+            ) : (
+              "Load More Activities"
+            )}
           </Button>
         </div>
       )}

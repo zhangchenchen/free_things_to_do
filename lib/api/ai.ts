@@ -17,6 +17,13 @@ interface OpenRouterResponse {
   created: number;
 }
 
+interface SearchParams {
+  location: string;
+  groupSize: string;
+  additionalPreferences?: string;
+  offset?: number;
+}
+
 function buildPrompt(params: SearchParams): string {
   const groupSizeText = {
     "1": "solo traveler",
@@ -25,7 +32,11 @@ function buildPrompt(params: SearchParams): string {
     "6+": "large group of 6 or more people"
   }[params.groupSize];
 
-  let prompt = `Suggest 5 free activities in ${params.location} suitable for a ${groupSizeText}.`;
+  let prompt = `Suggest ${params.offset ? 'additional' : ''} 5 free activities in ${params.location} suitable for a ${groupSizeText}.`;
+  
+  if (params.offset) {
+    prompt += ` Please provide 5 different activities from the previous ${params.offset} suggestions. These should be completely different from the previous recommendations.`;
+  }
   
   if (params.additionalPreferences) {
     prompt += ` Additional preferences: ${params.additionalPreferences}.`;

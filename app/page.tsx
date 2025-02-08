@@ -92,119 +92,92 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Categories Section */}
-        <section className="py-16 px-4 bg-muted/50">
+        {/* Footer */}
+        <footer className="border-t py-8 px-4">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Browse by Category</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                "Outdoor Adventures",
-                "Cultural Experiences",
-                "Family Fun",
-                "Student Activities",
-                "Seasonal Events",
-                "Indoor Activities",
-                "Local Attractions",
-                "Community Events",
-              ].map((category, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="h-24 text-lg font-medium"
-                >
-                  {category}
-                </Button>
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div>
+                <h3 className="font-semibold mb-4">About</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Our Mission
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      How It Works
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Contact Us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-4">Resources</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="/blog" className="text-sm text-muted-foreground hover:text-primary">
+                      Blog
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/faq" className="text-sm text-muted-foreground hover:text-primary">
+                      FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Activity Guide
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-4">Legal</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Terms of Service
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-4">Connect</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Twitter
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                      Instagram
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+              <p>&copy; {new Date().getFullYear()} Free Things To Do. All rights reserved.</p>
             </div>
           </div>
-        </section>
+        </footer>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t py-8 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-semibold mb-4">About</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Our Mission
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    How It Works
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="/blog" className="text-sm text-muted-foreground hover:text-primary">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="/faq" className="text-sm text-muted-foreground hover:text-primary">
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Activity Guide
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Terms of Service
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Connect</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                    Instagram
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Free Things To Do. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
