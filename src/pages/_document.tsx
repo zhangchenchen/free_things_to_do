@@ -4,21 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        {/* Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-LG62K1JM9Y"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-LG62K1JM9Y');
-            `,
-          }}
-        />
+        {/* 移除旧的 Google Analytics 代码 */}
       </Head>
       <body>
         <Main />

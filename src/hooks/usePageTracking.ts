@@ -1,19 +1,17 @@
+'use client'
+
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { logPageView } from '../utils/analytics'
 
 export const usePageTracking = () => {
-  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    const handleRouteChange = (url: string) => {
+    if (pathname) {
+      const url = searchParams ? `${pathname}?${searchParams}` : pathname
       logPageView(url)
     }
-
-    router.events.on('routeChangeComplete', handleRouteChange)
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+  }, [pathname, searchParams])
 } 
