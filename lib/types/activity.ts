@@ -13,13 +13,17 @@ export interface ActivityRequest {
 }
 
 export interface Activity {
-  id?: string;
   title: string;
   description: string;
-  category: string;
-  specific_location: string;
-  best_time: string;
-  notice: string;
+  location: string;
+  specific_location?: string;
+  groupSize: string;
+  bestTime: string;
+  best_time?: string;
+  city: string;
+  imageUrl?: string;
+  category?: string;
+  notice?: string;
 }
 
 export interface ActivityResponse {
@@ -33,6 +37,7 @@ export interface ActivityResponse {
 
 export interface SearchParams {
   location: string;
-  groupSize: "1" | "2" | "3-5" | "6+";
+  groupSize: string;
   additionalPreferences?: string;
+  offset?: number;
 }

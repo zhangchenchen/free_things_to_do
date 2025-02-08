@@ -23,14 +23,16 @@ export function ActivityResults({
     <div className="space-y-6">
       <div className="grid gap-6">
         {activities.map((activity) => (
-          <Card key={`${activity.title}-${activity.category}`} className="overflow-hidden">
+          <Card key={`${activity.title}-${activity.category || 'general'}`} className="overflow-hidden">
             <CardHeader className="border-b bg-muted/50 pb-4">
               <div className="flex flex-col items-start gap-2">
                 <CardTitle className="text-xl">{activity.title}</CardTitle>
-                <Badge variant="secondary">
-                  <Tag className="h-3 w-3 mr-1" />
-                  {activity.category}
-                </Badge>
+                {activity.category && (
+                  <Badge variant="secondary">
+                    <Tag className="h-3 w-3 mr-1" />
+                    {activity.category}
+                  </Badge>
+                )}
               </div>
             </CardHeader>
             <CardContent className="pt-6">
@@ -44,25 +46,25 @@ export function ActivityResults({
 
                 {/* 信息部分 */}
                 <div className="grid gap-4 bg-muted/30 p-4 rounded-lg">
-                  {activity.specific_location && (
+                  {(activity.specific_location || activity.location) && (
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4 text-primary shrink-0" />
                         <span className="font-medium">Location</span>
                       </div>
                       <div className="text-sm text-muted-foreground text-left">
-                        {activity.specific_location}
+                        {activity.specific_location || activity.location}
                       </div>
                     </div>
                   )}
-                  {activity.best_time && (
+                  {(activity.best_time || activity.bestTime) && (
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <Clock className="h-4 w-4 text-primary shrink-0" />
                         <span className="font-medium">Best Time</span>
                       </div>
                       <div className="text-sm text-muted-foreground text-left">
-                        {activity.best_time}
+                        {activity.best_time || activity.bestTime}
                       </div>
                     </div>
                   )}

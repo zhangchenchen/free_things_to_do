@@ -17,13 +17,6 @@ interface OpenRouterResponse {
   created: number;
 }
 
-interface SearchParams {
-  location: string;
-  groupSize: string;
-  additionalPreferences?: string;
-  offset?: number;
-}
-
 function buildPrompt(params: SearchParams): string {
   const groupSizeText = {
     "1": "solo traveler",

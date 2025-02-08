@@ -4,29 +4,119 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Users, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { Badge } from "@/components/ui/badge"
+import { ScrollToTopButton } from "@/components/scroll-to-top-button"
+import { ActivityCarousel } from "@/components/activity-carousel"
 
 export default function Home() {
   const featuredActivities = [
     {
-      title: "City Parks Explorer",
-      description: "Discover hidden gems in your local parks",
-      location: "Various Locations",
+      title: "Central Park Walking Tour",
+      description: "Take a self-guided walking tour through NYC's iconic Central Park. Visit Bethesda Fountain, Belvedere Castle, and Strawberry Fields.",
+      location: "Central Park, New York City",
       groupSize: "Any",
-      bestTime: "Morning/Evening",
+      bestTime: "Morning or Late Afternoon",
+      city: "New York",
+      imageUrl: "/images/activities/central-park.jpg",
     },
     {
-      title: "Museum Free Days",
-      description: "Visit world-class museums without spending a dime",
-      location: "Cultural District",
-      groupSize: "1-5",
-      bestTime: "Weekdays",
+      title: "Getty Center Art Museum",
+      description: "Explore world-class art collections and stunning architecture with free admission. Enjoy panoramic views of Los Angeles.",
+      location: "1200 Getty Center Dr, Los Angeles",
+      groupSize: "1-10",
+      bestTime: "Tuesday-Sunday, 10am-5:30pm",
+      city: "Los Angeles",
+      imageUrl: "/images/activities/getty-center.jpg",
     },
     {
-      title: "Nature Trails",
-      description: "Experience scenic hiking trails and wildlife",
-      location: "Regional Parks",
-      groupSize: "2-6",
-      bestTime: "All Day",
+      title: "Lincoln Park Zoo",
+      description: "One of the oldest zoos in North America offering free admission. Home to a diverse collection of animals in the heart of Chicago.",
+      location: "2001 N Clark St, Chicago",
+      groupSize: "Any",
+      bestTime: "Year-round, 10am-5pm",
+      city: "Chicago",
+      imageUrl: "/images/activities/lincoln-park-zoo.jpg",
+    },
+    {
+      title: "Smithsonian Museums",
+      description: "Visit the world's largest museum complex with free admission. Explore art, history, and science exhibits.",
+      location: "National Mall, Washington, DC",
+      groupSize: "Any",
+      bestTime: "Weekdays, 10am-5:30pm",
+      city: "Washington DC",
+      imageUrl: "/images/activities/smithsonian.jpg",
+    },
+    {
+      title: "Golden Gate Park",
+      description: "Discover 1,017 acres of gardens, museums, and hidden treasures. Perfect for picnics and outdoor activities.",
+      location: "San Francisco, CA",
+      groupSize: "Any",
+      bestTime: "Year-round, Dawn to Dusk",
+      city: "San Francisco",
+      imageUrl: "/images/activities/golden-gate-park.jpg",
+    },
+    {
+      title: "Pike Place Market",
+      description: "Experience the historic public market with street performers, local artisans, and amazing water views.",
+      location: "85 Pike St, Seattle",
+      groupSize: "Any",
+      bestTime: "Morning to Early Afternoon",
+      city: "Seattle",
+      imageUrl: "/images/activities/pike-place.jpg",
+    },
+    {
+      title: "British Museum",
+      description: "Explore one of the world's oldest museums housing human history, art, and culture. From the Rosetta Stone to the Parthenon sculptures.",
+      location: "Great Russell St, Bloomsbury, London",
+      groupSize: "Any",
+      bestTime: "10am-5pm, Late Fridays until 8:30pm",
+      city: "London",
+      imageUrl: "/images/activities/british-museum.jpg",
+    },
+    {
+      title: "Gardens by the Bay",
+      description: "Visit the spectacular Supertree Grove and outdoor gardens. While some attractions are paid, the main outdoor areas are free to explore.",
+      location: "18 Marina Gardens Drive, Singapore",
+      groupSize: "Any",
+      bestTime: "5am-2am Daily",
+      city: "Singapore",
+      imageUrl: "/images/activities/gardens-by-the-bay.jpg",
+    },
+    {
+      title: "Park Güell Free Zone",
+      description: "Explore the free public areas of Gaudí's whimsical park. Enjoy stunning views of Barcelona and unique architectural elements.",
+      location: "Park Güell, Barcelona",
+      groupSize: "Any",
+      bestTime: "Morning or Sunset",
+      city: "Barcelona",
+      imageUrl: "/images/activities/park-guell.jpg",
+    },
+    {
+      title: "Victoria Peak Trail",
+      description: "Hike the circular trail around Victoria Peak for breathtaking views of Hong Kong's skyline, harbor, and surrounding islands.",
+      location: "Victoria Peak, Hong Kong",
+      groupSize: "1-10",
+      bestTime: "Early Morning or Late Afternoon",
+      city: "Hong Kong",
+      imageUrl: "/images/activities/victoria-peak.jpg",
+    },
+    {
+      title: "Sensō-ji Temple",
+      description: "Visit Tokyo's oldest Buddhist temple. Experience traditional architecture, street food, and shopping along Nakamise Shopping Street.",
+      location: "2-3-1 Asakusa, Taito City, Tokyo",
+      groupSize: "Any",
+      bestTime: "Early Morning or Evening",
+      city: "Tokyo",
+      imageUrl: "/images/activities/sensoji-temple.jpg",
+    },
+    {
+      title: "Royal Botanic Gardens",
+      description: "Explore 30 hectares of stunning gardens, featuring Australian natives and exotic species. Perfect for picnics and nature walks.",
+      location: "Mrs Macquaries Rd, Sydney",
+      groupSize: "Any",
+      bestTime: "9am-5pm Daily",
+      city: "Sydney",
+      imageUrl: "/images/activities/sydney-gardens.jpg",
     },
   ]
 
@@ -52,43 +142,15 @@ export default function Home() {
         </section>
 
         {/* Featured Activities */}
-        <section className="py-16 px-4">
+        <section className="py-20 px-4 bg-muted/30">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Featured Activities</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {featuredActivities.map((activity, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <CardTitle>{activity.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {activity.description}
-                    </p>
-                    <div className="space-y-2">
-                      <div className="flex items-center text-sm">
-                        <MapPin className="mr-2 h-4 w-4" />
-                        {activity.location}
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <Users className="mr-2 h-4 w-4" />
-                        {activity.groupSize}
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <Clock className="mr-2 h-4 w-4" />
-                        {activity.bestTime}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Popular Free Activities</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Discover some of the most popular free attractions across major cities around the world
+              </p>
             </div>
-            <div className="text-center mt-8">
-              <Button variant="outline" size="lg">
-                Explore More Activities
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
+            <ActivityCarousel activities={featuredActivities} />
           </div>
         </section>
 
