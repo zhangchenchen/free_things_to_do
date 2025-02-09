@@ -36,7 +36,7 @@ const blogPosts: BlogPost[] = [
     title: "10 Free Weekend Activities for Families",
     excerpt: "Discover amazing free activities you can do with your family this weekend, from park adventures to community events.",
     author: "Sarah Johnson",
-    date: "2024-03-15",
+    date: "2025-02-09",
     category: "Family Activities",
     readingTime: "5 min read",
     tags: ["family", "weekend", "outdoor", "community"]
@@ -46,7 +46,7 @@ const blogPosts: BlogPost[] = [
     title: "Best Free Museums Around the World",
     excerpt: "A comprehensive guide to free museum days and permanently free museums in major cities across the globe.",
     author: "Michael Chen",
-    date: "2024-03-10",
+    date: "2025-02-08",
     category: "Cultural Activities",
     readingTime: "7 min read",
     tags: ["museums", "culture", "art", "history"]
@@ -56,7 +56,7 @@ const blogPosts: BlogPost[] = [
     title: "Spring Outdoor Activities That Don't Cost a Dime",
     excerpt: "Welcome the warmer weather with these fantastic free outdoor activities perfect for everyone.",
     author: "Emma Wilson",
-    date: "2024-03-05",
+    date: "2025-02-07",
     category: "Outdoor Activities",
     readingTime: "6 min read",
     tags: ["spring", "outdoor", "seasonal", "nature"]

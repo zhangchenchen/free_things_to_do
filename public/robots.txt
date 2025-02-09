@@ -1,0 +1,45 @@
+# https://freethingstodo.net/robots.txt
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://freethingstodo.net/sitemap.xml
+
+# Disallow specific paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Additional rules for specific bots
+User-agent: GPTBot
+Allow: /blog/
+Allow: /faq/
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Allow: /blog/
+Allow: /faq/
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+
+User-agent: Bingbot
+Allow: /
+Allow: /blog/
+Allow: /faq/
+
+# Rate limiting for specific bots
+User-agent: AhrefsBot
+Crawl-delay: 2
+
+User-agent: SemrushBot
+Crawl-delay: 2 
