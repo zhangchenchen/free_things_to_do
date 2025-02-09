@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     statusBarStyle: 'default',
     title: 'Free Things To Do',
   },
+  verification: {
+    google: 'wTbbbNTH5iPRqQXL6NJAY5klYD6geJvif8yk3XhxlKg',
+  },
 };
 
 export default function RootLayout({
@@ -39,7 +42,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="google-site-verification" content="wTbbbNTH5iPRqQXL6NJAY5klYD6geJvif8yk3XhxlKg" />
+        <meta 
+          name="google-site-verification" 
+          content="wTbbbNTH5iPRqQXL6NJAY5klYD6geJvif8yk3XhxlKg" 
+        />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
