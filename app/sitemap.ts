@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
-import { posts } from '@/lib/blog-data'  // 我们需要创建这个文件来存储博客数据
+import { getPosts } from '@/lib/blog-data'
 
 type ChangeFreq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getPosts()
   const baseUrl = 'https://freethingstodo.net'
   
   // 基础页面

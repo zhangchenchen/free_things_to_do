@@ -83,6 +83,57 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            'max-width': 'none',
+            color: 'hsl(var(--foreground))',
+            h1: {
+              marginTop: '2em',
+              marginBottom: '1em',
+            },
+            h2: {
+              marginTop: '1.75em',
+              marginBottom: '0.75em',
+            },
+            h3: {
+              marginTop: '1.5em',
+              marginBottom: '0.5em',
+            },
+            p: {
+              marginTop: '1.25em',
+              marginBottom: '1.25em',
+            },
+            li: {
+              marginTop: '0.375em',
+              marginBottom: '0.375em',
+            },
+            'ul > li': {
+              paddingLeft: '1.5em',
+              position: 'relative',
+              '&::before': {
+                content: '""',
+                width: '0.5em',
+                height: '0.5em',
+                borderRadius: '50%',
+                backgroundColor: 'hsl(var(--primary))',
+                position: 'absolute',
+                left: 0,
+                top: '0.6em',
+              },
+            },
+            'ol > li': {
+              paddingLeft: '1.5em',
+            },
+            blockquote: {
+              borderLeftColor: 'hsl(var(--primary))',
+              borderLeftWidth: '0.25rem',
+              paddingLeft: '1rem',
+              fontStyle: 'italic',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

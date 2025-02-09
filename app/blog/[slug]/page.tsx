@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/site-header"
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from 'next/navigation'
-import { posts, type Post } from '@/lib/blog-data'
+import { getPost, getAllPosts } from '@/lib/blog-data'
 
 interface BlogPostParams {
   params: {
@@ -13,7 +13,7 @@ interface BlogPostParams {
 
 // 生成动态元数据
 export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
-  const post = posts[params.slug]
+  const post = await getPost(params.slug)
   
   if (!post) {
     return {
@@ -39,15 +39,16 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
   }
 }
 
-// 添加 generateStaticParams 函数
+// 修改 generateStaticParams 函数
 export async function generateStaticParams() {
+  const posts = await getAllPosts()
   return Object.keys(posts).map((slug) => ({
     slug: slug,
   }))
 }
 
-export default function BlogPost({ params }: BlogPostParams) {
-  const post = posts[params.slug]
+export default async function BlogPost({ params }: BlogPostParams) {
+  const post = await getPost(params.slug)
   
   if (!post) {
     notFound()
@@ -80,7 +81,7 @@ export default function BlogPost({ params }: BlogPostParams) {
           </div>
 
           <div 
-            className="prose prose-slate max-w-none"
+            className="prose prose-slate lg:prose-lg max-w-none prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:text-base prose-p:leading-relaxed prose-li:text-base prose-li:leading-relaxed prose-ul:space-y-2 prose-ol:space-y-2 prose-blockquote:text-gray-700 dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
