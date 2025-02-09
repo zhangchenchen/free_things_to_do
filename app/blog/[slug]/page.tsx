@@ -324,6 +324,9 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
+    },
+    alternates: {
+      canonical: `https://freethingstodo.net/blog/${params.slug}`
     }
   }
 }

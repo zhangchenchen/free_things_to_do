@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import Link from "next/link"
+import { Metadata } from 'next'
 
 export default function PrivacyPolicy() {
   return (
@@ -55,7 +56,7 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-semibold mb-4">Contact</h2>
               <p>
                 If you have any questions about our privacy practices, you can reach us at{" "}
-                <a href="mailto:contact@freethingstodo.com" className="text-primary hover:underline">
+                <a href="mailto:contact@https://freethingstodo.net/" className="text-primary hover:underline">
                   pekingzcc@gmail.com
                 </a>
               </p>
@@ -65,4 +66,12 @@ export default function PrivacyPolicy() {
       </main>
     </div>
   )
+}
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Free Things To Do',
+  description: 'Privacy policy and data handling practices for Free Things To Do.',
+  alternates: {
+    canonical: 'https://freethingstodo.net/privacy'
+  }
 } 

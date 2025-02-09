@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import Link from "next/link"
+import { Metadata } from 'next'
 
 export default function TermsOfService() {
   return (
@@ -55,4 +56,12 @@ export default function TermsOfService() {
       </main>
     </div>
   )
+}
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | Free Things To Do',
+  description: 'Terms of service and usage conditions for Free Things To Do.',
+  alternates: {
+    canonical: 'https://freethingstodo.net/terms'
+  }
 } 

@@ -12,7 +12,10 @@ export const metadata: Metadata = {
     title: 'Free Activities Blog - Tips and Guides | Free Things To Do',
     description: 'Discover tips, guides and recommendations for free activities around the world.',
     type: 'website',
-    url: 'https://freethingstodo.com/blog',
+    url: 'https://freethingstodo.net/blog',
+  },
+  alternates: {
+    canonical: 'https://freethingstodo.net/blog'
   }
 }
 
