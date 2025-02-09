@@ -81,7 +81,26 @@ export default async function BlogPost({ params }: BlogPostParams) {
           </div>
 
           <div 
-            className="prose prose-slate lg:prose-lg max-w-none prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:text-base prose-p:leading-relaxed prose-li:text-base prose-li:leading-relaxed prose-ul:space-y-2 prose-ol:space-y-2 prose-blockquote:text-gray-700 dark:prose-invert"
+            className="prose prose-slate lg:prose-lg max-w-none 
+              dark:prose-invert
+              prose-headings:scroll-mt-20
+              prose-headings:font-bold 
+              prose-h1:text-4xl prose-h1:mb-8
+              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+              prose-p:text-base prose-p:leading-7 prose-p:my-6
+              prose-li:text-base prose-li:leading-7
+              prose-ul:my-6 prose-ul:space-y-4
+              prose-ol:my-6 prose-ol:space-y-4
+              prose-blockquote:text-gray-700 prose-blockquote:border-l-primary
+              prose-blockquote:bg-muted/50 prose-blockquote:py-2 prose-blockquote:px-6
+              prose-strong:text-primary prose-strong:font-bold
+              prose-img:rounded-lg prose-img:shadow-md
+              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+              prose-code:text-primary prose-code:bg-muted/50 prose-code:px-1 prose-code:rounded
+              prose-pre:bg-muted prose-pre:text-muted-foreground
+              [&>*:first-child]:mt-0
+              [&>*:last-child]:mb-0"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
