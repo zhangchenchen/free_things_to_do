@@ -1,12 +1,15 @@
+'use client'
+
 import { SiteHeader } from "@/components/site-header"
 import { ActivitySearch } from "@/components/activity-search"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Users, Clock, ArrowRight } from "lucide-react"
+import { MapPin, Users, Clock, ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { ScrollToTopButton } from "@/components/scroll-to-top-button"
 import { ActivityCarousel } from "@/components/activity-carousel"
+import { useCallback } from 'react'
 
 export default function Home() {
   const featuredActivities = [
@@ -120,6 +123,20 @@ export default function Home() {
     },
   ]
 
+  const scrollToSection = useCallback((id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      const headerOffset = 80 // 根据你的header高度调整
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }, [])
+
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
@@ -138,6 +155,68 @@ export default function Home() {
               looking for cost-free entertainment.
             </p>
             <ActivitySearch />
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section 
+          id="how-it-works" 
+          className="py-20 px-4 bg-background scroll-mt-20"
+        >
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center space-y-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <MapPin className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-xl">Enter Location</h3>
+                <p className="text-muted-foreground">Simply tell us where you are or where you plan to visit</p>
+              </div>
+              <div className="text-center space-y-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Users className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-xl">Specify Your Group</h3>
+                <p className="text-muted-foreground">Let us know your group size and any specific preferences</p>
+              </div>
+              <div className="text-center space-y-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Sparkles className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-xl">Get Personalized Results</h3>
+                <p className="text-muted-foreground">Receive AI-powered suggestions tailored to your needs</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Mission Section */}
+        <section 
+          id="mission" 
+          className="py-20 px-4 bg-muted/30 scroll-mt-20"
+        >
+          <div className="container mx-auto">
+            <div className="max-w-3xl mx-auto text-center space-y-8">
+              <h2 className="text-3xl font-bold">Our Mission</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                We believe that amazing experiences shouldn't come with a price tag. Our mission is to connect people with enriching free activities in their communities and while traveling. Through the power of AI, we make it easier than ever to discover cultural, educational, and entertaining activities that are accessible to everyone.
+              </p>
+              <div className="grid sm:grid-cols-3 gap-6 pt-8">
+                <div className="p-4 bg-background rounded-lg shadow-sm">
+                  <h3 className="font-semibold mb-2">Accessibility</h3>
+                  <p className="text-sm text-muted-foreground">Making memorable experiences available to everyone, regardless of budget</p>
+                </div>
+                <div className="p-4 bg-background rounded-lg shadow-sm">
+                  <h3 className="font-semibold mb-2">Community</h3>
+                  <p className="text-sm text-muted-foreground">Connecting people with their local culture and community resources</p>
+                </div>
+                <div className="p-4 bg-background rounded-lg shadow-sm">
+                  <h3 className="font-semibold mb-2">Innovation</h3>
+                  <p className="text-sm text-muted-foreground">Using AI to personalize and simplify activity discovery</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -162,19 +241,20 @@ export default function Home() {
                 <h3 className="font-semibold mb-4">About</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                    <button
+                      onClick={() => scrollToSection('mission')}
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
                       Our Mission
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                    <button
+                      onClick={() => scrollToSection('how-it-works')}
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
                       How It Works
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                      Contact Us
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -182,19 +262,14 @@ export default function Home() {
                 <h3 className="font-semibold mb-4">Resources</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="/blog" className="text-sm text-muted-foreground hover:text-primary">
+                    <Link href="/blog" className="text-sm text-muted-foreground hover:text-primary">
                       Blog
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/faq" className="text-sm text-muted-foreground hover:text-primary">
+                    <Link href="/faq" className="text-sm text-muted-foreground hover:text-primary">
                       FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                      Activity Guide
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -202,14 +277,20 @@ export default function Home() {
                 <h3 className="font-semibold mb-4">Legal</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                    <Link 
+                      href="/privacy" 
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
                       Privacy Policy
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                    <Link 
+                      href="/terms" 
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
                       Terms of Service
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -217,18 +298,11 @@ export default function Home() {
                 <h3 className="font-semibold mb-4">Connect</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                      Twitter
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                      Facebook
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-primary">
-                      Instagram
+                    <a 
+                      href="mailto:pekingzcc@gmail.com" 
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
+                      Email Us
                     </a>
                   </li>
                 </ul>
