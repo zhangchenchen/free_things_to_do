@@ -24,12 +24,36 @@ export async function getPost(slug: string): Promise<Post | null> {
     const { data, content } = matter(fileContents)
     
     const processedContent = await remark()
-      .use(html)
+      .use(html, {
+        sanitize: false // 允许 HTML 标签
+      })
       .process(content)
     
-    // 在转换后添加 class
     const contentHtml = processedContent.toString()
-      .replace(/<h([1-6])/g, '<h$1 class="scroll-mt-20"')
+      // 标题样式
+      .replace(/<h1/g, '<h1 class="text-4xl font-bold mt-8 mb-6"')
+      .replace(/<h2/g, '<h2 class="text-3xl font-semibold mt-12 mb-6"')
+      .replace(/<h3/g, '<h3 class="text-2xl font-semibold mt-8 mb-4"')
+      .replace(/<h4/g, '<h4 class="text-xl font-semibold mt-6 mb-4"')
+      .replace(/<h5/g, '<h5 class="text-lg font-semibold mt-6 mb-4"')
+      .replace(/<h6/g, '<h6 class="text-base font-semibold mt-6 mb-4"')
+      
+      // 段落和列表样式
+      .replace(/<p>/g, '<p class="mb-6 leading-7 text-gray-700 dark:text-gray-300">')
+      .replace(/<ul>/g, '<ul class="list-disc pl-6 mb-6 space-y-2 text-gray-700 dark:text-gray-300">')
+      .replace(/<ol>/g, '<ol class="list-decimal pl-6 mb-6 space-y-2 text-gray-700 dark:text-gray-300">')
+      
+      // 引用和图片样式
+      .replace(/<blockquote>/g, '<blockquote class="border-l-4 border-primary pl-4 py-2 my-6 bg-gray-50 dark:bg-gray-800 italic text-gray-700 dark:text-gray-300">')
+      .replace(/<img/g, '<img class="rounded-lg shadow-md my-8 mx-auto max-w-full h-auto"')
+      
+      // 其他元素样式
+      .replace(/<hr>/g, '<hr class="my-8 border-t border-gray-200 dark:border-gray-700">')
+      .replace(/<strong>/g, '<strong class="font-semibold text-gray-900 dark:text-gray-100">')
+      .replace(/<em>/g, '<em class="italic text-gray-800 dark:text-gray-200">')
+      
+      // 列表项样式
+      .replace(/<li>/g, '<li class="text-gray-700 dark:text-gray-300">')
 
     return {
       slug,

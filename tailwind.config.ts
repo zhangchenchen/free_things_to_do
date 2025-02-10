@@ -89,28 +89,20 @@ const config: Config = {
             'max-width': 'none',
             color: 'hsl(var(--foreground))',
             h1: {
-              marginTop: '2em',
-              marginBottom: '1em',
+              color: 'hsl(var(--foreground))',
             },
             h2: {
-              marginTop: '1.75em',
-              marginBottom: '0.75em',
+              color: 'hsl(var(--foreground))',
             },
             h3: {
-              marginTop: '1.5em',
-              marginBottom: '0.5em',
+              color: 'hsl(var(--foreground))',
             },
-            p: {
-              marginTop: '1.25em',
-              marginBottom: '1.25em',
-            },
-            li: {
-              marginTop: '0.375em',
-              marginBottom: '0.375em',
+            h4: {
+              color: 'hsl(var(--foreground))',
             },
             'ul > li': {
-              paddingLeft: '1.5em',
               position: 'relative',
+              paddingLeft: '1.5em',
               '&::before': {
                 content: '""',
                 width: '0.5em',
@@ -123,13 +115,15 @@ const config: Config = {
               },
             },
             'ol > li': {
-              paddingLeft: '1.5em',
+              paddingLeft: '0.5em',
+            },
+            strong: {
+              color: 'hsl(var(--foreground))',
+              fontWeight: '600',
             },
             blockquote: {
               borderLeftColor: 'hsl(var(--primary))',
-              borderLeftWidth: '0.25rem',
-              paddingLeft: '1rem',
-              fontStyle: 'italic',
+              color: 'hsl(var(--muted-foreground))',
             },
           },
         },

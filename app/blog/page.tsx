@@ -32,35 +32,36 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "free-things-to-do-chiangmai",
+    title: "15 Best Free Things to Do in Chiang Mai: A Local's Guide",
+    excerpt: "Discover the best free activities in Chiang Mai, from ancient temples to local markets. Experience authentic Thai culture and find amazing free things to do near you in Thailand's northern capital.",
+    author: "Somchai Thongchai",
+    date: "2025-02-10",
+    category: "Travel Guides",
+    readingTime: "8 min read",
+    tags: ["free things to do", "Chiang Mai", "Thailand", "culture", "travel"]
+  },
+  {
     slug: "free-weekend-activities-families",
-    title: "10 Free Weekend Activities for Families",
-    excerpt: "Discover amazing free activities you can do with your family this weekend, from park adventures to community events.",
+    title: "10 Best Free Things to Do with Family in Los Angeles",
+    excerpt: "Discover the best free family activities in Los Angeles, curated by a 30-year local resident. From hidden beach spots to secret urban trails, these are the authentic LA experiences that won't cost you a dime.",
     author: "Sarah Johnson",
     date: "2025-02-09",
     category: "Family Activities",
-    readingTime: "5 min read",
-    tags: ["family", "weekend", "outdoor", "community"]
+    readingTime: "7 min read",
+    tags: ["family", "Los Angeles", "outdoor", "local guide"]
   },
   {
     slug: "best-free-museums-worldwide",
-    title: "Best Free Museums Around the World",
-    excerpt: "A comprehensive guide to free museum days and permanently free museums in major cities across the globe.",
+    title: "Best Free Museums in the World: A Complete Guide",
+    excerpt: "Discover world-class museums that are completely free! From New York to London, Paris to Tokyo, explore the best free cultural attractions near you.",
     author: "Michael Chen",
     date: "2025-02-08",
     category: "Cultural Activities",
-    readingTime: "7 min read",
+    readingTime: "8 min read",
     tags: ["museums", "culture", "art", "history"]
-  },
-  {
-    slug: "spring-outdoor-activities",
-    title: "Spring Outdoor Activities That Don't Cost a Dime",
-    excerpt: "Welcome the warmer weather with these fantastic free outdoor activities perfect for everyone.",
-    author: "Emma Wilson",
-    date: "2025-02-07",
-    category: "Outdoor Activities",
-    readingTime: "6 min read",
-    tags: ["spring", "outdoor", "seasonal", "nature"]
   }
+
 ]
 
 export default function BlogPage() {
